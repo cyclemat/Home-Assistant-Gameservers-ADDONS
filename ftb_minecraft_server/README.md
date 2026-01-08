@@ -156,3 +156,28 @@ This project is provided **as-is**, without warranty.
 
 Minecraft is a trademark of Mojang Studios.  
 Feed The Beast (FTB) is a trademark of Feed The Beast Ltd.
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/logo.png" width="200">
+</p>
+
+
+<hr>
+
+<p align="center" style="margin-top: 16px;">
+  <em style="font-size: 1.05em;">
+    “Every block placed is a step into your own story.”
+  </em>
+  <br>
+  <span style="opacity: 0.8; font-size: 0.95em;">
+    — inspired by Minecraft
+  </span>
+</p>
+
+
+
+
+
+
+
