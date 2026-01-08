@@ -15,11 +15,11 @@
 
 ---
 <p align="center">
-  <a href="https://my.home-assistant.io/redirect/supervisor_addon_repository/?repository_url=https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS">
+  <a href="https://my.home-assistant.io/redirect/supervisor_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fcyclemat%2FHome-Assistant-Gameservers-ADDONS">
     <img
       src="https://my.home-assistant.io/badges/supervisor_addon_repository.svg"
       style="width: 60%; max-width: 320px;"
-      alt="Add to Home Assistant"
+      alt="Add repository to Home Assistant"
     >
   </a>
 </p>
