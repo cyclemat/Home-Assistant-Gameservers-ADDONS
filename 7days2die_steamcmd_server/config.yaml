@@ -3,6 +3,8 @@ slug: 7days2die_steamcmd_server
 description: 7 Days to Die Dedicated Server via SteamCMD for Home Assistant OS
 version: "1.0.5"
 
+url: https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS/tree/main/7days2die_steamcmd_server
+
 arch:
   - amd64
 
