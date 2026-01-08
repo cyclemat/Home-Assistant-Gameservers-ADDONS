@@ -1,7 +1,7 @@
 name: "FTB Minecraft Server"
 slug: ftb_minecraft_server
 description: "Headless FTB Modpack Installer + Server. Java 8/17/21
-version: "0.2.2"
+version: "0.2.3"
 arch:
   - amd64
   - aarch64
