@@ -1,0 +1,48 @@
+
+name: Valheim Dedicated Server (SteamCMD)
+slug: valheim_steamcmd_server
+description: Valheim Dedicated Server via SteamCMD (Server & Saves in /share)
+version: "1.0.4"
+
+arch:
+  - amd64
+
+startup: application
+boot: auto
+init: false
+
+host_network: false
+
+ports:
+  2456/udp: 2456
+  2457/udp: 2457
+  2458/udp: 2458
+
+map:
+  - share:rw
+
+options:
+  app_id: 896660
+  update_on_boot: true
+  validate: false
+
+  server_name: "Valheim HAOS"
+  world_name: "Dedicated"
+  password: "changeme"
+  public: true
+
+  port: 2456
+  extra_args: ""
+
+schema:
+  app_id: int
+  update_on_boot: bool
+  validate: bool
+
+  server_name: str
+  world_name: str
+  password: str
+  public: bool
+  port: int
+
+  extra_args: str?
