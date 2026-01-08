@@ -4,8 +4,9 @@
        width="50%">
 </p>
 
-
-# 🌌 StarRupture Dedicated Server (SteamCMD + Wine)
+<p align="center">
+  🌌 StarRupture Dedicated Server (SteamCMD + Wine)
+</p>
 <p align="center">
   <img src="https://img.shields.io/badge/Home%20Assistant-OS-blue" alt="Home Assistant OS">
   <img src="https://img.shields.io/badge/Architecture-amd64-blue" alt="Architecture">
