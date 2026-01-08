@@ -1,0 +1,63 @@
+name: "FTB Minecraft Server"
+slug: ftb_minecraft_server
+description: "Headless FTB Modpack Installer + Server. Java 8/17/21
+version: "0.2.2"
+arch:
+  - amd64
+  - aarch64
+
+startup: application
+boot: auto
+init: false
+
+host_network: false
+
+ports:
+  25565/tcp: 25565
+ports_description:
+  25565/tcp: "Minecraft Server Port"
+
+map:
+  - share:rw
+
+options:
+  # Java: 8 = Legacy (sehr alte Packs), 17 = Standard, 21 = neu (1.20.5+/1.21)
+  java_version: "21"
+
+  # Java-Fallback: wenn typischer Java-Version-Fehler erkannt wird, probiert er automatisch alternative Versionen.
+  java_fallback: true
+
+  # RAM (MB) - wird als Java Tool Options gesetzt (Xms/Xmx)
+  xms_mb: 1024
+  xmx_mb: 4096
+
+  # Default: modernes Test-Pack (FTB One)
+  pack_id: 97
+  version_id: 0          # 0 = latest
+
+  server_port: 25565
+  auto_accept_eula: true
+
+  # Persistente Daten:
+  data_dir: "/share/ftb"
+  instance_name: "ftb_one_test"
+
+  # FTB Server Installer Release Tag:
+  installer_version: "v1.0.31"
+
+  # true = Installation jedes Mal neu erzwingen
+  force_reinstall: false
+
+schema:
+  java_version: list(8|17|21)
+  java_fallback: bool
+  xms_mb: int
+  xmx_mb: int
+  pack_id: int
+  version_id: int
+  server_port: int
+  auto_accept_eula: bool
+  data_dir: str
+  instance_name: str
+  installer_version: str
+  force_reinstall: bool
