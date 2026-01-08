@@ -1,4 +1,4 @@
-p align="center">
+<p align="center">
   <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/css_steamcmd_server/banner.png" alt="Counter-Strike: Source Dedicated Server Add-on" width="100%">
 </p>
 
