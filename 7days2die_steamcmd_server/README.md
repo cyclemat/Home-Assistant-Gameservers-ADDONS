@@ -2,6 +2,8 @@
   <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/7days2die_steamcmd_server/banner.jpg" width="80%">
 </p>
 
+<h1 align="center">7 Days to Die Dedicated Server (SteamCMD)</h1>
+
 <p align="center">
   <img src="https://img.shields.io/badge/Home%20Assistant-Add--on-blue?logo=homeassistant&logoColor=white">
   <img src="https://img.shields.io/badge/SteamCMD-Included-blue?logo=steam&logoColor=white">
