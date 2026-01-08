@@ -155,6 +155,9 @@ This project is provided as-is without warranty.
 7 Days to Die is a trademark of **The Fun Pimps**.
 
 ---
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/logo.png" width="200">
+</p>
 
 <p align="center">
   <strong>Have fun surviving the apocalypse! 🧟🔥</strong>
