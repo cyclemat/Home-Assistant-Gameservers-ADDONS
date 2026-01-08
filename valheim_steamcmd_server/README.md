@@ -46,10 +46,10 @@ All server data is stored safely inside `/share` so updates or rebuilds will nev
 All relevant data is stored persistently:
 
 ```
-/share/valheim/
-├── server/ # Valheim server files (SteamCMD)
-├── data/ # Worlds, saves, characters
-└── home/ # Unity / Steam / PlayerPrefs (persistent)
+/share/valheim/ |
+                ├── server/ # Valheim server files (SteamCMD)
+                ├── data/ # Worlds, saves, characters
+                └── home/ # Unity / Steam / PlayerPrefs (persistent)
 ```
 
 ---
