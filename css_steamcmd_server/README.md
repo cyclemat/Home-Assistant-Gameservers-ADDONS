@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">Counter-Strike: Source Dedicated Server (SteamCMD)</h1>
----
+
 <p align="center">
   <img src="https://img.shields.io/badge/Home%20Assistant-Add--on-blue.svg">
   <img src="https://img.shields.io/badge/Architecture-amd64-blue.svg">
