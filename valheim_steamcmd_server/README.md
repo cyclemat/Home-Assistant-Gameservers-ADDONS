@@ -149,4 +149,8 @@ If you encounter any issues:
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/logo.png" width="200">
+</p>
+
 ⚔️ **Skål, Viking! Have fun conquering Valheim!**
