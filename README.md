@@ -19,10 +19,9 @@
     <img
       src="https://my.home-assistant.io/badges/supervisor_addon_repository.svg"
       style="width: 60%; max-width: 320px;"
-      alt="Add repository to Home Assistant"
+      alt="Add Add-on Repository to Home Assistant"
     >
   </a>
-</p>
 ---
 
 ## 🚀 About This Repository
