@@ -1,7 +1,7 @@
 
 name: Valheim Dedicated Server (SteamCMD)
 slug: valheim_steamcmd_server
-description: Valheim Dedicated Server via SteamCMD (Server & Saves in /share)
+description: Valheim Dedicated Server
 version: "1.0.4"
 
 arch:
