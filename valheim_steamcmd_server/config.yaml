@@ -2,7 +2,7 @@
 name: Valheim Dedicated Server (SteamCMD)
 slug: valheim_steamcmd_server
 description: Valheim Dedicated Server
-version: "1.0.4"
+version: "1.0.5"
 
 arch:
   - amd64
