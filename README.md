@@ -6,7 +6,7 @@
 <h3 align="center">Run your own game servers at home – simple, private & fully automated</h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Home%20Assistant-ADD-ON-yellow.svg">
+  <img src="https://img.shields.io/badge/Home%20Assistant-ADD--ON-yellow.svg" alt="Home Assistant Add-on">
   <img src="https://img.shields.io/badge/Type-Dedicated%20Server-red.svg">
   <img src="https://img.shields.io/badge/Platform-HAOS%20%7C%20Docker-green.svg">
   <img src="https://img.shields.io/badge/Status-Active%20Development-orange.svg">
