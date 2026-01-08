@@ -2,6 +2,8 @@
   <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/css_steamcmd_server/banner.png" alt="Counter-Strike: Source Dedicated Server Add-on" width="100%">
 </p>
 
+<h1 Counter-Strike: Source Dedicated Server (SteamCMD)</h1>
+
 <p align="center">
   <img src="https://img.shields.io/badge/Home%20Assistant-Add--on-blue.svg">
   <img src="https://img.shields.io/badge/Architecture-amd64-blue.svg">
