@@ -1,10 +1,10 @@
 # 🦖 Palworld Dedicated Server (SteamCMD)
-
-![Home Assistant OS](https://img.shields.io/badge/Home%20Assistant-OS-blue)
-![Architecture](https://img.shields.io/badge/Architecture-amd64-blue)
-![SteamCMD](https://img.shields.io/badge/SteamCMD-Enabled-orange)
-![Status](https://img.shields.io/badge/Status-Beta-orange)
-
+<p align="center">
+  ![Home Assistant OS](https://img.shields.io/badge/Home%20Assistant-OS-blue)
+  ![Architecture](https://img.shields.io/badge/Architecture-amd64-blue)
+  ![SteamCMD](https://img.shields.io/badge/SteamCMD-Enabled-orange)
+  ![Status](https://img.shields.io/badge/Status-Beta-orange)
+</p>
 A Home Assistant OS add-on to run a fully host-based **Palworld Dedicated Server**
 using **SteamCMD**.
 
