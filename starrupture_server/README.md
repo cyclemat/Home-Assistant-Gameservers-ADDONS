@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/banner.png" alt="Home Assistant Game Servers Add-ons" width="50%">
+</p>
+
+
 # 🌌 StarRupture Dedicated Server (SteamCMD + Wine)
 
 ![Home Assistant OS](https://img.shields.io/badge/Home%20Assistant-OS-blue)
