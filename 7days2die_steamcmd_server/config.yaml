@@ -1,0 +1,53 @@
+name: 7 Days to Die Dedicated Server (SteamCMD)
+slug: 7days2die_steamcmd_server
+description: 7 Days to Die Dedicated Server via SteamCMD for Home Assistant OS
+version: "1.0.3"
+
+arch:
+  - amd64
+
+startup: application
+boot: auto
+init: false
+
+ports:
+  26900/udp: 26900
+  26900/tcp: 26900
+  8081/tcp: 8081
+  8080/tcp: 8080
+
+map:
+  - share:rw
+
+options:
+  update_on_boot: true
+  validate: false
+  stream_log: true
+
+  server_name: "My Game Host"
+  server_description: "A 7 Days to Die server"
+  server_password: ""
+  max_players: 8
+  game_name: "MyGame"
+  game_difficulty: 1
+
+  telnet_enabled: true
+  eac_enabled: true
+  web_dashboard_enabled: false
+
+schema:
+  update_on_boot: bool
+  validate: bool
+  stream_log: bool
+
+  server_name: str
+  server_description: str
+  server_password: str?
+  max_players: int
+  game_name: str
+  game_difficulty: int
+
+  telnet_enabled: bool
+  eac_enabled: bool
+  web_dashboard_enabled: bool
+
