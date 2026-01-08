@@ -3,8 +3,7 @@ slug: starrupture_server
 version: "1.0.6"
 
 description: >
-  StarRupture Dedicated Server as Home Assistant Add-on.
-  Server configuration is done in-game.
+  StarRupture Dedicated Server
 
 url: https://github.com/cyclemat/HAOS---StarRupture-Dedicated-Server
 
