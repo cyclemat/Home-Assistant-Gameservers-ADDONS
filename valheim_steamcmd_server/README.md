@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/valheim/banner.png" alt="Valheim Dedicated Server" width="100%">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/blob/main/valheim_steamcmd_server/banner.png" alt="Valheim Dedicated Server" width="100%">
 </p>
 
 <h1 align="center">🛡️ Valheim Dedicated Server</h1>
