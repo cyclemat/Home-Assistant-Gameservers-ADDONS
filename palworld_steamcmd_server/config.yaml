@@ -1,0 +1,35 @@
+name: Palworld Dedicated Server (SteamCMD)
+slug: palworld_steamcmd_server
+description: Palworld Dedicated Server – Steam komplett unter /share
+version: "1.3.0"
+arch:
+  - amd64
+
+startup: application
+boot: auto
+init: false
+host_network: false
+
+ports:
+  8211/udp: 8211
+  27015/udp: 27015
+
+ports_description:
+  8211/udp: "Game Port (UDP)"
+  27015/udp: "Query Port (UDP)"
+
+# 🔴 NUR share – Steam + Server + Config liegen auf dem Host
+map:
+  - share:rw
+
+options:
+  app_id: 2394010
+  steam_user: anonymous
+  steam_pass: ""
+  update_on_boot: true
+
+schema:
+  app_id: int
+  steam_user: str
+  steam_pass: str?
+  update_on_boot: bool
