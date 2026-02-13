@@ -3,28 +3,28 @@
 # 🎮 Garry's Mod Dedicated Server
 ## Home Assistant Add-on
 
-Dieses Add-on installiert und betreibt einen **Garry's Mod Dedicated Server** direkt in Home Assistant über SteamCMD.
+This add-on installs and runs a **Garry's Mod Dedicated Server** directly inside Home Assistant using SteamCMD.
 
-Der Server kann vollständig über die Add-on-Konfiguration verwaltet werden und speichert alle Daten persistent im Home Assistant `/share` Ordner.
+The server can be fully managed via the add-on configuration and stores all data persistently in the Home Assistant `/share` directory.
 
 ---
 
 ## ✅ Features
 
-- Automatische Installation über SteamCMD
-- Automatische Updates beim Start (optional)
-- Persistente Serverdaten
-- Automatische oder manuelle server.cfg Verwaltung
-- Crash-Erkennung mit automatischem Restart
-- Workshop Collection Support
-- Konfigurierbare Serverparameter
-- Home Assistant kompatibles Logging
+- Automatic installation via SteamCMD
+- Optional automatic updates on start
+- Persistent server data
+- Automatic or manual server.cfg handling
+- Automatic restart on server crash
+- Workshop collection support
+- Configurable server parameters
+- Home Assistant compatible logging
 
 ---
 
-## 📁 Serverdaten
+## 📁 Server Data
 
-Alle Serverdaten bleiben bei Updates erhalten:
+All server data remains intact across updates:
 
 ```
 /share/gmod/server/
@@ -36,7 +36,7 @@ Alle Serverdaten bleiben bei Updates erhalten:
     └── workshop
 ```
 
-Die Serverkonfiguration liegt unter:
+Server configuration file location:
 
 ```
 /share/gmod/server/garrysmod/cfg/server.cfg
@@ -44,26 +44,26 @@ Die Serverkonfiguration liegt unter:
 
 ---
 
-## ⚙️ server.cfg automatisch erzeugen
+## ⚙️ Automatic server.cfg generation
 
-Option im Add-on:
+Add-on option:
 
 ```
 generate_server_cfg_on_start
 ```
 
-| Wert | Verhalten |
+| Value | Behavior |
 |------|-----------|
-| true | server.cfg wird bei jedem Start neu erstellt |
-| false | Datei bleibt unverändert und kann manuell bearbeitet werden |
+| true | server.cfg is regenerated on every start |
+| false | server.cfg remains unchanged and can be edited manually |
 
 ---
 
-## 🔁 Automatischer Neustart bei Crash
+## 🔁 Automatic restart on crash
 
-Der Server wird bei Absturz automatisch neu gestartet.
+The server automatically restarts if it crashes.
 
-Konfigurierbar über:
+Configurable via:
 
 ```
 auto_restart_on_crash
@@ -72,57 +72,57 @@ restart_delay_seconds
 
 ---
 
-## 🌐 Standard Ports
+## 🌐 Default Ports
 
-| Port | Zweck |
-|------|------|
+| Port | Purpose |
+|------|---------|
 | UDP 27015 | Game / Query |
 | UDP 27005 | Client |
 | TCP 27016 | RCON |
 
-Ports können bei Bedarf angepasst werden.
+Ports can be customized if needed.
 
 ---
 
 ## 📦 Workshop Support
 
-Folgende Optionen stehen zur Verfügung:
+Available options:
 
 - `workshop_collection_id`
 - `workshop_authkey`
 
-Damit können Addons automatisch geladen werden.
+These allow automatic addon downloads from the Steam Workshop.
 
 ---
 
 ## 🚀 Installation
 
-1. Add-on in Home Assistant installieren
-2. Konfiguration anpassen
-3. Server starten
+1. Install the add-on in Home Assistant
+2. Adjust configuration
+3. Start the server
 
-Beim ersten Start lädt SteamCMD den Server vollständig herunter.
-
----
-
-## 🛠️ Hinweise
-
-- Der erste Start kann mehrere Minuten dauern.
-- Große Workshop Collections verlängern die Startzeit.
-- Serverdaten bleiben bei Updates erhalten.
+On first start, SteamCMD downloads the complete server files, which may take some time.
 
 ---
 
-## 📦 Teil der Game Server Add-on Sammlung
+## 🛠️ Notes
 
-Dieses Add-on gehört zur Home Assistant Gameserver Add-on Reihe.
-
-Weitere Verbesserungen geplant:
-- Spieleranzahl Sensor
-- Serverstatus Sensor
-- Restart Button in Home Assistant
-- Backup Funktionen
+- First startup may take several minutes.
+- Large workshop collections increase startup time.
+- Server data remains persistent between updates.
 
 ---
 
-Viel Spaß mit deinem Garry's Mod Server! 🎉
+## 📦 Part of the Game Server Add-on Collection
+
+This add-on is part of the Home Assistant game server add-on series.
+
+Planned future improvements:
+- Player count sensor
+- Server status sensor
+- Restart button in Home Assistant
+- Backup functionality
+
+---
+
+Enjoy your Garry's Mod server! 🎉
