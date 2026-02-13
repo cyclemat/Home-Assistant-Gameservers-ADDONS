@@ -1,0 +1,80 @@
+name: "Garry's Mod Dedicated Server (SteamCMD)"
+slug: "gmod_steamcmd_server"
+version: "0.1.6"
+description: "Garry's Mod Server via SteamCMD mit optionaler server.cfg Generierung und automatischem Restart bei Crash."
+arch:
+  - amd64
+  - aarch64
+
+# Force Debian base image (needs apt/dpkg for 32-bit libs + steamcmd)
+startup: services
+boot: auto
+init: false
+
+map:
+  - share:rw
+
+ports:
+  27015/udp: 27015
+  27016/tcp: 27016
+  27005/udp: 27005
+
+ports_description:
+  27015/udp: "Game / Query Port (UDP)"
+  27016/tcp: "RCON Port (TCP)"
+  27005/udp: "Client Port (UDP)"
+
+options:
+
+  steamcmd_validate: false
+  auto_update_on_start: true
+
+  hostname: "GMod Server"
+  maxplayers: 16
+  sv_lan: 0
+  sv_password: ""
+  rcon_password: ""
+
+  map: "gm_construct"
+  gamemode: "sandbox"
+
+  port: 27015
+  clientport: 27005
+  tickrate: 0
+
+  workshop_collection_id: ""
+  workshop_authkey: ""
+
+  generate_server_cfg_on_start: false
+
+  auto_restart_on_crash: true
+  restart_delay_seconds: 5
+
+  extra_args: ""
+
+schema:
+  steamcmd_validate: bool
+  auto_update_on_start: bool
+
+  hostname: str
+  maxplayers: int(1,128)
+  sv_lan: int(0,1)
+  sv_password: password?
+  rcon_password: password?
+
+  map: str
+  gamemode: str
+
+  port: int(1,65535)
+  clientport: int(1,65535)
+  tickrate: int(0,128)
+
+  workshop_collection_id: str?
+  workshop_authkey: password?
+
+  generate_server_cfg_on_start: bool
+
+  auto_restart_on_crash: bool
+  restart_delay_seconds: int(1,300)
+
+  extra_args: str?
