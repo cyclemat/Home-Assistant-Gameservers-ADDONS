@@ -1,6 +1,6 @@
 ![banner](banner.png)
 
-# 🎮 Garry's Mod Dedicated Server
+# 🎮 Garry's Mod Dedicated Server *Beta Please give feedBack
 ## Home Assistant Add-on
 
 This add-on installs and runs a **Garry's Mod Dedicated Server** directly inside Home Assistant using SteamCMD.
