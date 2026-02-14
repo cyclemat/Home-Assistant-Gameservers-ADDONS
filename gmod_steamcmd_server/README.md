@@ -1,4 +1,4 @@
-![banner](banner.png)
+![banner](https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/gmod_steamcmd_server/banner.png)
 
 # 🎮 Garry's Mod Dedicated Server *Beta Please give feedBack
 ## Home Assistant Add-on
