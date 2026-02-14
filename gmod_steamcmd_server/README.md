@@ -1,4 +1,6 @@
-![banner](https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/gmod_steamcmd_server/banner.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/gmod_steamcmd_server/banner.png" alt="Garry's Mod Server Home Assistant Add-on" width="100%">
+</p>
 
 # 🎮 Garry's Mod Dedicated Server *Beta Please give feedBack
 ## Home Assistant Add-on
