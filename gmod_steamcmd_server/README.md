@@ -1,88 +1,80 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/gmod_steamcmd_server/banner.png" alt="Garry's Mod Server Home Assistant Add-on" width="50%">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/gmod_steamcmd_server/banner.png" alt="Garry's Mod Server Home Assistant Add-on" width="100%">
 </p>
 
-# 🎮 Garry's Mod Dedicated Server *Beta Please give feedBack
 <p align="center">
-  <img src="https://img.shields.io/badge/Home%20Assistant-Add--on-blue.svg">
-  <img src="https://img.shields.io/badge/Architecture-amd64-blue.svg">
-  <img src="https://img.shields.io/badge/SteamCMD-supported-brightgreen.svg">
-  <img src="https://img.shields.io/badge/Game-GMOD-blue.svg">
+  <a href="https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS/tree/main/gmod_steamcmd_server">
+    <img src="https://img.shields.io/badge/Home%20Assistant-Add--on-41BDF5?logo=home-assistant&logoColor=white" alt="Home Assistant Add-on">
+  </a>
+  <img src="https://img.shields.io/badge/arch-amd64%20%7C%20aarch64-informational" alt="Arch">
+  <img src="https://img.shields.io/badge/SteamCMD-AppID%204020-success" alt="SteamCMD AppID 4020">
+  <img src="https://img.shields.io/badge/status-beta-orange" alt="Status">
 </p>
+
+# 🎮 Garry's Mod Dedicated Server
 ## Home Assistant Add-on
 
+This add-on installs and runs a **Garry's Mod Dedicated Server** inside Home Assistant using **SteamCMD**.
 
-
-This add-on installs and runs a **Garry's Mod Dedicated Server** directly inside Home Assistant using SteamCMD.
-
-The server can be fully managed via the add-on configuration and stores all data persistently in the Home Assistant `/share` directory.
+All server data is stored persistently under `/share`, so updates won't wipe your config, addons or workshop content.
 
 ---
 
 ## ✅ Features
 
-- Automatic installation via SteamCMD
-- Optional automatic updates on start
-- Persistent server data
-- Automatic or manual server.cfg handling
-- Automatic restart on server crash
+- SteamCMD install & update (optional validate)
+- Persistent server files in `/share/gmod`
+- Optional `server.cfg` auto-generation (toggle)
+- Manual config supported (toggle off)
+- Auto restart on crash (+ configurable delay)
 - Workshop collection support
-- Configurable server parameters
-- Home Assistant compatible logging
+- Configurable ports & start parameters
+- Logs available in Home Assistant add-on log
 
 ---
 
-## 📁 Server Data
-
-All server data remains intact across updates:
+## 📁 Persistent paths
 
 ```
 /share/gmod/server/
 └── garrysmod/
-    ├── addons
-    ├── cfg
-    ├── data
-    ├── logs
-    └── workshop
+    ├── addons/
+    ├── cfg/
+    ├── data/
+    ├── logs/
+    └── workshop/
 ```
 
-Server configuration file location:
-
+Main config:
 ```
 /share/gmod/server/garrysmod/cfg/server.cfg
 ```
 
 ---
 
-## ⚙️ Automatic server.cfg generation
+## ⚙️ server.cfg handling
 
-Add-on option:
-
-```
-generate_server_cfg_on_start
-```
+Toggle:
+- `generate_server_cfg_on_start`
 
 | Value | Behavior |
-|------|-----------|
-| true | server.cfg is regenerated on every start |
-| false | server.cfg remains unchanged and can be edited manually |
+|------|----------|
+| `true`  | `server.cfg` is re-generated on every start |
+| `false` | `server.cfg` is never touched (manual edits stay) |
 
 ---
 
-## 🔁 Automatic restart on crash
+## 🔁 Crash auto-restart
 
-The server automatically restarts if it crashes.
+Options:
+- `auto_restart_on_crash`
+- `restart_delay_seconds`
 
-Configurable via:
-
-```
-auto_restart_on_crash
-restart_delay_seconds
-```
+If enabled, the add-on restarts the server after a crash automatically.
 
 ---
 
-## 🌐 Default Ports
+## 🌐 Default ports
 
 | Port | Purpose |
 |------|---------|
@@ -90,49 +82,37 @@ restart_delay_seconds
 | UDP 27005 | Client |
 | TCP 27016 | RCON |
 
-Ports can be customized if needed.
-
 ---
 
-## 📦 Workshop Support
+## 📦 Workshop support
 
-Available options:
-
+Options:
 - `workshop_collection_id`
 - `workshop_authkey`
 
-These allow automatic addon downloads from the Steam Workshop.
+---
+
+## 🚀 Install
+
+1. Copy this add-on into:
+   ```
+   /addons/local/gmod_steamcmd_server
+   ```
+2. Home Assistant → Add-ons → Add-on Store → Reload
+3. Install & start
+
+First start will download server files (may take a while).
 
 ---
 
-## 🚀 Installation
+## ❤️ Support
 
-1. Install the add-on in Home Assistant
-2. Adjust configuration
-3. Start the server
+If you like this add-on and want to support development:
 
-On first start, SteamCMD downloads the complete server files, which may take some time.
+PayPal: https://paypal.me/cyclemat
 
 ---
 
-## 🛠️ Notes
-
-- First startup may take several minutes.
-- Large workshop collections increase startup time.
-- Server data remains persistent between updates.
-
----
-
-## 📦 Part of the Game Server Add-on Collection
-
-This add-on is part of the Home Assistant game server add-on series.
-
-Planned future improvements:
-- Player count sensor
-- Server status sensor
-- Restart button in Home Assistant
-- Backup functionality
-
----
-
-Enjoy your Garry's Mod server! 🎉
+<p align="center">
+  <img src="YOUR_CM_LOGO_RAW_URL" alt="CycleMat" width="220">
+</p>
