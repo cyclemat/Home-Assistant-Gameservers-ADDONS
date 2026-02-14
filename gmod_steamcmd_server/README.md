@@ -5,6 +5,13 @@
 # 🎮 Garry's Mod Dedicated Server *Beta Please give feedBack
 ## Home Assistant Add-on
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Home%20Assistant-Add--on-blue.svg">
+  <img src="https://img.shields.io/badge/Architecture-amd64-blue.svg">
+  <img src="https://img.shields.io/badge/SteamCMD-supported-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Game-GMOD-blue.svg">
+</p>
+
 This add-on installs and runs a **Garry's Mod Dedicated Server** directly inside Home Assistant using SteamCMD.
 
 The server can be fully managed via the add-on configuration and stores all data persistently in the Home Assistant `/share` directory.
