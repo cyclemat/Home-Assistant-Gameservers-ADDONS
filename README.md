@@ -54,6 +54,9 @@ Each game server is provided as its own Home Assistant add-on with:
 - Clean startup & shutdown handling
 
 Examples:
+- ⛏️ Minecraft Vanilla Dedicated Server
+- 🧵 Minecraft Fabric Dedicated Server
+- 🧪 FTB Minecraft Dedicated Server
 - 🛡️ Valheim Dedicated Server
 - 🧟 Palworld Dedicated Server
 - 🚀 StarRupture Dedicated Server  
