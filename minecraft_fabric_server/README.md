@@ -47,8 +47,9 @@ It is designed to be:
 
 All server files are stored persistently in:
 
-/share/minecraft-fabric/
+/share/minecraft-fabric/servers/<server_name>/
 ├── fabric-server-launch.jar
+├── mods/
 ├── world/
 ├── logs/
 └── .jre/
@@ -79,6 +80,7 @@ https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS
 
 | Option | Description |
 |-----|------------|
+| `server_name` | Server name used as folder under `data_dir/servers` |
 | `mc_version` | `latest` or a specific Minecraft version (e.g. `1.21.1`) |
 | `fabric_loader_version` | `latest` or a specific Fabric loader version |
 | `fabric_installer_version` | `latest` or a specific Fabric installer version |

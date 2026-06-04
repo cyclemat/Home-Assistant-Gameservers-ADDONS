@@ -29,6 +29,9 @@ map:
 options:
   data_dir: "/share/minecraft-fabric"
 
+  # Name for the server (used as subfolder under data_dir/servers)
+  server_name: "default"
+
   # RAM (MB)
   xms_mb: 1024
   xmx_mb: 4096
@@ -44,6 +47,7 @@ options:
 
 schema:
   data_dir: str
+  server_name: str
   xms_mb: int
   xmx_mb: int
   mc_version: str

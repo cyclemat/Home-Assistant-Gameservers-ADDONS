@@ -18,6 +18,7 @@ echo "-----------------------------------------------------------"
 # Optionen
 # -----------------------------------------------------------
 DATA_DIR="$(jq -r '.data_dir' /data/options.json)"
+SERVER_NAME="$(jq -r '.server_name' /data/options.json)"
 XMS_MB="$(jq -r '.xms_mb' /data/options.json)"
 XMX_MB="$(jq -r '.xmx_mb' /data/options.json)"
 MC_VERSION="$(jq -r '.mc_version' /data/options.json)"
@@ -25,13 +26,18 @@ FABRIC_LOADER_VERSION="$(jq -r '.fabric_loader_version' /data/options.json)"
 FABRIC_INSTALLER_VERSION="$(jq -r '.fabric_installer_version' /data/options.json)"
 
 [[ "${DATA_DIR}" == "null" || -z "${DATA_DIR}" ]] && DATA_DIR="/share/minecraft-fabric"
+[[ "${SERVER_NAME}" == "null" || -z "${SERVER_NAME}" ]] && SERVER_NAME="default"
 [[ "${MC_VERSION}" == "null" || -z "${MC_VERSION}" ]] && MC_VERSION="latest"
 [[ "${FABRIC_LOADER_VERSION}" == "null" || -z "${FABRIC_LOADER_VERSION}" ]] && FABRIC_LOADER_VERSION="latest"
 [[ "${FABRIC_INSTALLER_VERSION}" == "null" || -z "${FABRIC_INSTALLER_VERSION}" ]] && FABRIC_INSTALLER_VERSION="latest"
 
 CONTAINER_PORT="25565"
 
+BASE_DIR="${DATA_DIR}"
+DATA_DIR="${BASE_DIR}/servers/${SERVER_NAME}"
+
 mkdir -p "${DATA_DIR}"
+mkdir -p "${DATA_DIR}/mods"
 cd "${DATA_DIR}"
 
 LOG_DIR="${DATA_DIR}/logs"
