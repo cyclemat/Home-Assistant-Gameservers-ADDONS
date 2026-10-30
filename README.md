@@ -1,129 +1,187 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/banner.png" alt="Home Assistant Game Servers Add-ons" width="80%">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/club_penguin_houdini/bannercp.png" alt="Club Penguin Houdini – Home Assistant OS Add-on" width="100%">
 </p>
 
-<h1 align="center">🎮 Home Assistant Game Servers Add-ons</h1>
-<h3 align="center">Run your own game servers at home – simple, private & fully automated</h3>
+<h1 align="center">🐧 Club Penguin Houdini Server</h1>
+<h3 align="center">Home Assistant OS Add-on · Experimental Beta</h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Home%20Assistant-blue.svg" alt="Platform: Home Assistant">
-  <img src="https://img.shields.io/badge/Architecture-amd64-blue.svg" alt="Architecture: amd64">
-  <img src="https://img.shields.io/badge/Category-ADD--ON-yellow">
-  <img src="https://img.shields.io/badge/Type-Dedicated%20Server-red">
-  <img src="https://img.shields.io/badge/Status-Active%20Development-green.svg">
+  <img src="https://img.shields.io/badge/status-experimental%20beta-orange.svg" alt="Status: Experimental Beta">
+  <img src="https://img.shields.io/badge/arch-amd64-blue.svg" alt="Architecture: amd64">
+  <img src="https://img.shields.io/badge/platform-HAOS-41BDF5.svg" alt="Platform: Home Assistant OS">
+  <img src="https://img.shields.io/badge/server-Houdini-yellow.svg" alt="Server: Houdini">
+  <img src="https://img.shields.io/badge/client-not%20included-red.svg" alt="Client not included">
+</p>
+
+<p align="center">
+  <a href="README.de.md">🇩🇪 Deutsch</a> · <strong>🇬🇧 English</strong>
 </p>
 
 ---
 
-## 🚀 About This Repository
+## 📌 About
 
-This repository provides **Home Assistant add-ons for running dedicated game servers** directly on **Home Assistant OS (HAOS)**.
+This Home Assistant add-on packages the open-source **Houdini** server for the classic **Club Penguin** multiplayer game. Run a login server, one game world and their local database services directly on **Home Assistant OS (HAOS)**.
 
-The goal is simple:
+The goal matches the other [CycleMat Game Server Add-ons](https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS):
 
-> **Enable everyone to host private game servers at home – without complicated setups, cloud providers, or external infrastructure.**
+- 🏠 Self-hosted on your own hardware
+- 📦 Managed from the Home Assistant add-on interface
+- 💾 Persistent service data
+- 🔧 A starting point for a complete private server setup
 
-All add-ons are designed to be:
-- 🔹 Easy to install
-- 🔹 Fully automated
-- 🔹 Persistent (data stored in `/share`)
-- 🔹 Safe to update & rebuild
-- 🔹 Suitable for 24/7 home servers
-
----
-
-## 🎯 Why Home Assistant?
-
-Home Assistant already runs on many home servers and mini PCs.  
-Why not use that power to also host **game servers**?
-
-Benefits:
-- 🏠 Everything runs **locally at home**
-- 🔐 Full control over your data
-- ♻️ Restart-safe & update-friendly
-- ⚡ Integrated into your existing HA ecosystem
+> [!WARNING]
+> **Experimental server-only beta:** This add-on has not been validated by a complete HAOS build and gameplay test. It does **not** include a playable game client, Flash/game assets, Dash, account registration, or the complete Wand stack. Installing it alone is **not sufficient to play Club Penguin**.
 
 ---
 
-## 📦 Available Game Server Add-ons
+## ✨ Features
 
-Each game server is provided as its own Home Assistant add-on with:
-- SteamCMD integration (Steam based servers) or automatic Java and server downloads (Minecraft)
-- Persistent data storage
-- Automatic updates (optional)
-- Clean startup & shutdown handling
+- 🐧 Houdini login server
+- 🌍 One configurable world (`blizzard` by default)
+- 🐘 PostgreSQL database inside the container
+- ⚡ Redis inside the container
+- 🗄️ Persistent add-on data storage under `/data`
+- 🌐 Home Assistant port mapping for the login and world servers
+- 🖥️ Headless operation and logs in Home Assistant
 
-| Add-on | Folder | Notes |
+---
+
+## 📦 Included Services
+
+| Component | Purpose | Availability |
 |---|---|---|
-| 🛡️ Valheim Dedicated Server | [`valheim_steamcmd_server`](valheim_steamcmd_server) | SteamCMD |
-| 🧟 Palworld Dedicated Server | [`palworld_steamcmd_server`](palworld_steamcmd_server) | SteamCMD |
-| 🚀 StarRupture Dedicated Server | [`starrupture_server`](starrupture_server) | SteamCMD + Wine |
-| 🌾 7 Days to Die Dedicated Server | [`7days2die_steamcmd_server`](7days2die_steamcmd_server) | SteamCMD |
-| 🔫 Counter-Strike: Source Dedicated Server | [`css_steamcmd_server`](css_steamcmd_server) | SteamCMD |
-| 🔧 Garry's Mod Dedicated Server | [`gmod_steamcmd_server`](gmod_steamcmd_server) | SteamCMD |
-| ⛏️ Minecraft Vanilla Dedicated Server | [`minecraft_vanilla_server`](minecraft_vanilla_server) | Official Mojang server, the Java version follows the Minecraft version |
-| 🧱 Minecraft Paper + Geyser (Java & Bedrock) | [`minecraft_paper_geyser_server`](minecraft_paper_geyser_server) | Paper with Geyser and Floodgate, Java and Bedrock players on one server |
-| 📦 FTB Minecraft Server | [`ftb_minecraft_server`](ftb_minecraft_server) | Modpacks via the FTB installer |
-
-*(more coming)*
-
-> The Minecraft Vanilla and Paper + Geyser add-ons require you to accept the [Minecraft EULA](https://aka.ms/MinecraftEULA)
-> in the add-on configuration (`accept_eula`) before the server starts.
+| Houdini Login | Account login protocol | Included |
+| Houdini World | Game-world server | Included (`blizzard` default) |
+| PostgreSQL | Database | Internal only |
+| Redis | Cache / messaging | Internal only |
+| Dash and registration | Web services | Not included |
+| Game client and assets | Player access | Not included |
+| Full Wand deployment | Additional services | Not included |
 
 ---
 
-## 🧩 One-Click Installation (Home Assistant)
+## 📁 Data Structure
 
-You can add this repository directly to your **Home Assistant Add-on Store**:
+The add-on uses Home Assistant's persistent add-on data volume (mounted as `/data` inside the container), **not** the `/share` directory used by some other CycleMat game servers.
 
-### 👉 Add Repository
-https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS
+```text
+Home Assistant add-on data (/data)
+├── PostgreSQL data
+├── Redis data
+└── Other persistent runtime files, where configured
+```
 
+> [!IMPORTANT]
+> Back up the add-on data before upgrading, removing or rebuilding the add-on. Persistent storage does not replace a backup.
 
-In Home Assistant:
-1. Go to **Settings → Add-ons → Add-on Store**
-2. Click **⋮ → Repositories**
-3. Paste the URL above
-4. Install your desired game server add-on
+---
+
+## 🌐 Network & Ports
+
+| Port | Protocol | Purpose |
+|---|---|---|
+| `6112` | TCP | Houdini login server |
+| `9875` | TCP | Houdini game world |
+
+Ports can be mapped to alternative host ports in the Home Assistant add-on's **Network** tab. PostgreSQL and Redis are intended to be reachable only inside the container.
+
+⚠️ **Security:** These game ports are not protected by TLS by default. Do not publicly forward them without evaluating the security risks. Prefer a trusted local network or VPN for testing.
+
+---
+
+## ⚙️ Configuration
+
+The current `config.yaml` provides:
+
+| Option | Default | Description |
+|---|---|---|
+| `world_name` | `blizzard` | Name of the game world |
+| `world_id` | `3100` | Numerical world identifier (1–9999) |
+| `log_level` | `INFO` | `DEBUG`, `INFO`, `WARNING` or `ERROR` |
+
+These are the current settings. Account registration, client download and web hosting are **not** configurable because those services are not included.
+
+---
+
+## 🚀 Installation & First Start
+
+### Install from the CycleMat repository
+
+1. Open **Settings → Add-ons → Add-on Store** in Home Assistant.
+2. Select **⋮ → Repositories** and add:
+
+   `https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS`
+
+3. Find **Club Penguin Houdini (Experimental)** and select **Install**.
+4. Review the **Configuration** and **Network** tabs.
+5. Start the add-on and inspect its **Logs**.
+
+The initial build requires internet access to retrieve upstream sources and dependencies. Because this is a legacy server stack, build or start-up errors are possible.
+
+### Local installation alternative
+
+Copy the `club_penguin_houdini` directory into `/addons/club_penguin_houdini`, reload the Add-on Store, then install it from **Local add-ons**.
+
+---
+
+## 🧠 Technical Details
+
+- Based on [solero/houdini](https://github.com/solero/houdini)
+- [solero/wand](https://github.com/solero/wand) is the upstream Docker-oriented ecosystem, **not** fully bundled in this add-on
+- PostgreSQL and Redis are run together with Houdini inside one add-on container
+- Current add-on architecture: `amd64`
+- Docker build fetches upstream project dependencies
+- Dedicated Docker Compose or host Docker socket access is not required
+
+---
+
+## 🔄 Updates & Project Status
+
+This is a **development build**, not an automatically verified stable release. Do not assume that rebuilding or installing the newest dependencies will work without adjustments. Take a Home Assistant backup before updates.
+
+### Planned improvements
+
+- ✅ Initial HAOS add-on structure
+- ⬜ Verified HAOS build and startup
+- ⬜ More reliable dependency pinning and health checks
+- ⬜ Account creation and management
+- ⬜ Compatible client and asset setup instructions
+- ⬜ Optional Dash/web frontend integration
+- ⬜ Multi-world support
 
 ---
 
 ## ⚠️ Disclaimer
 
-This project is a **community-driven, private hobby project**.
-
-- I am **not affiliated with any game developer or publisher**
-- All game names, trademarks, and copyrights belong to their respective owners
-- These add-ons only provide **dedicated server wrappers**
-- You must own the respective games and follow their license terms
+This is an unofficial community hobby project. It is not affiliated with or endorsed by Disney, Club Penguin, the Houdini maintainers or the Wand maintainers. Game names and assets belong to their respective rights holders. **No proprietary game client or assets are distributed with this add-on.** Use only software and game assets you are legally permitted to use.
 
 ---
 
 ## ❤️ Support & Donations
 
-All add-ons are **free to use**.
+This add-on is developed and maintained in my free time. All CycleMat game-server add-ons are free to use.
 
-If you enjoy this project and want to support further development, you are welcome to leave a small donation — **completely optional**:
+If you enjoy the project and would like to support development:
 
 👉 **Donate via PayPal:** http://paypal.me/cyclemat
 
-No pressure, no ads, no paywalls.  
-Just open-source and passion ❤️
+Thank you for your support! ❤️
 
 ---
 
-## 🛠️ Feedback & Contributions
+## 🐛 Issues & Feedback
 
-- Issues and suggestions are welcome
-- Feel free to open pull requests
-- New game server ideas are always appreciated
+Report bugs, logs and suggestions here:
+
+👉 [GitHub Issues](https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS/issues)
+
+When reporting a problem, include the HAOS version, add-on version and relevant start-up logs (without passwords or other secrets).
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/logo.png" width="200">
+  <img src="https://raw.githubusercontent.com/cyclemat/Home-Assistant-Gameservers-ADDONS/main/assets/logo.png" alt="CycleMat" width="200">
 </p>
 
-<p align="center">
-  <strong>Host your worlds. Your server. Your rules.</strong>
-</p>
+<p align="center"><strong>Host your worlds. Your server. Your rules. 🐧</strong></p>
