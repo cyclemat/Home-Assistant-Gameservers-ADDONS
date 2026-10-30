@@ -6,7 +6,7 @@ description: >
   downloads and verifies the server JAR and stores all data persistently
   in /share. The Minecraft EULA must be accepted explicitly in the
   add-on configuration.
-version: "0.0.4"
+version: "0.0.3"
 
 arch:
   - amd64
@@ -99,36 +99,3 @@ schema:
   server_jar_url: str?
   # Optional: Java-Version erzwingen (sonst aus den Mojang-Metadaten)
   java_major: int(8,99)?
-  whitelist_enabled: bool
-  whitelist:
-    - match(^[A-Za-z0-9_]{1,16}$)
-  ops:
-    - match(^[A-Za-z0-9_]{1,16}$)
-  banned_players:
-    - match(^[A-Za-z0-9_]{1,16}$)
-  performance_profile: list(custom|low|balanced|high)
-  cpu_priority: list(normal|low|lowest)
-  cpu_cores: int(0,64)
-  memory_guard: bool
-  fixed_heap: bool
-  view_distance: int(0,32)
-  simulation_distance: int(0,32)
-  max_players: int(0,10000)
-  entity_broadcast_range: int(0,500)
-  difficulty: list(default|peaceful|easy|normal|hard)
-  gamemode: list(default|survival|creative|adventure|spectator)
-  force_gamemode: list(default|true|false)
-  hardcore: list(default|true|false)
-  pvp: list(default|true|false)
-  allow_flight: list(default|true|false)
-  allow_nether: list(default|true|false)
-  spawn_monsters: list(default|true|false)
-  spawn_animals: list(default|true|false)
-  spawn_npcs: list(default|true|false)
-  generate_structures: list(default|true|false)
-  command_blocks: list(default|true|false)
-  spawn_protection: int(-1,1000)
-  motd: str?
-  level_seed: str?
-  game_rules:
-    - match(^[A-Za-z0-9_:]{1,64}=(true|false|-?[0-9]{1,9})$)
