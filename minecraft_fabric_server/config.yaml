@@ -1,0 +1,55 @@
+name: "Minecraft Fabric Dedicated Server"
+slug: minecraft_fabric_server
+description: >
+  Minecraft Fabric Dedicated Server for Home Assistant OS.
+  Automatically installs Java, accepts the Minecraft EULA,
+  installs Fabric, downloads the selected server version and stores all data
+  persistently in /share.
+version: "0.0.1"
+
+arch:
+  - amd64
+  - aarch64
+
+startup: application
+boot: auto
+init: false
+host_network: false
+
+# Container läuft IMMER auf 25565
+# Der Host-Port kann im HA UI geändert werden
+ports:
+  25565/tcp: 25565
+ports_description:
+  25565/tcp: "Minecraft server port (container fixed to 25565)"
+
+map:
+  - share:rw
+
+options:
+  data_dir: "/share/minecraft-fabric"
+
+  # Name for the server (used as subfolder under data_dir/servers)
+  server_name: "default"
+
+  # RAM (MB)
+  xms_mb: 1024
+  xmx_mb: 4096
+
+  # "latest" oder z.B. "1.21.1" (fuer Mod-Kompatibilitaet explizit setzen)
+  mc_version: "latest"
+
+  # "latest" oder z.B. "0.16.10"
+  fabric_loader_version: "latest"
+
+  # "latest" oder z.B. "1.0.1"
+  fabric_installer_version: "latest"
+
+schema:
+  data_dir: str
+  server_name: str
+  xms_mb: int
+  xmx_mb: int
+  mc_version: str
+  fabric_loader_version: str
+  fabric_installer_version: str
