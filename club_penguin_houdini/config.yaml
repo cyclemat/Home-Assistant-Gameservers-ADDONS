@@ -1,0 +1,27 @@
+name: "Club Penguin Houdini (Experimental)"
+version: "0.1.0"
+slug: "club_penguin_houdini"
+description: "Experimental self-contained Houdini login and world server for HAOS. No game/web client."
+url: "https://github.com/solero/houdini"
+arch:
+  - amd64
+init: false
+startup: services
+boot: auto
+ports:
+  "6112/tcp": 6112
+  "9875/tcp": 9875
+ports_description:
+  "6112/tcp": "Houdini login server"
+  "9875/tcp": "Houdini Blizzard world"
+options:
+  world_name: "blizzard"
+  world_id: 3100
+  log_level: "INFO"
+schema:
+  world_name: str
+  world_id: int(1,9999)
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
+map:
+  - type: addon_config
+    read_only: false
