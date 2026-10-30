@@ -5,6 +5,7 @@ description: "Experimental self-contained Houdini login and world server for HAO
 url: "https://github.com/solero/houdini"
 arch:
   - amd64
+  - aarch64
 init: false
 startup: services
 boot: auto
