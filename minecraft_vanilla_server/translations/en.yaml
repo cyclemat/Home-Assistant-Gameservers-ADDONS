@@ -1,0 +1,111 @@
+configuration:
+  data_dir:
+    name: Data directory
+    description: Where the server files, worlds and the Java runtime are stored.
+  accept_eula:
+    name: Accept the Minecraft EULA
+    description: Must be enabled to start the server. By enabling it you agree to the Minecraft EULA (https://aka.ms/MinecraftEULA).
+  xms_mb:
+    name: Minimum RAM (MB)
+    description: Must not be greater than the maximum RAM.
+  xmx_mb:
+    name: Maximum RAM (MB)
+    description: Maximum memory for the server.
+  mc_version:
+    name: Minecraft version
+    description: '"latest" or a specific version, for example 1.21.1.'
+  server_jar_url:
+    name: Custom server JAR URL
+    description: Optional https link to a server JAR. Overrides the Minecraft version and is not checksum verified.
+  java_major:
+    name: Java version
+    description: Optional. Forces a Java version. By default it is read from the Mojang metadata.
+  whitelist_enabled:
+    name: Enable the whitelist
+    description: Only players on the whitelist can join. The list itself works even while this is off.
+  whitelist:
+    name: Whitelist
+    description: Player names that are allowed to join. Synchronized with the server on every start. Entries added in game are kept, entries removed here are removed from the server.
+  ops:
+    name: Operators
+    description: Player names with operator rights. Synchronized with the server on every start.
+  banned_players:
+    name: Banned players
+    description: Player names that cannot join (the ban list). Synchronized with the server on every start.
+  performance_profile:
+    name: Performance profile
+    description: "custom leaves server.properties alone. low (view 6, simulation 4, 10 players), balanced (8, 6, 20) or high (12, 8, 40) set view-distance, simulation-distance and max-players on every start. The simulation distance has the biggest effect on CPU load."
+  cpu_priority:
+    name: CPU priority
+    description: "normal, low or lowest. A lower priority makes the server give way to Home Assistant when the CPU is busy."
+  cpu_cores:
+    name: CPU cores
+    description: Number of CPU cores the server may use, 0 means all. The server runs on the last cores so the first ones stay free for the system and Home Assistant.
+  memory_guard:
+    name: Memory guard
+    description: Limits the maximum RAM automatically so that at least a quarter of the system RAM (at least 1536 MB) stays free for the system and Home Assistant. Otherwise Linux ends the add-on first when memory runs out.
+  fixed_heap:
+    name: Fixed heap
+    description: Sets the minimum RAM equal to the maximum RAM and claims the memory at startup. This avoids heap resizing while running (recommended by Paper). Starting takes a little longer.
+  view_distance:
+    name: View distance (chunks)
+    description: "0 keeps the value from server.properties (or the performance profile). Otherwise 2 to 32. Affects RAM and network load."
+  simulation_distance:
+    name: Simulation distance (chunks)
+    description: "0 keeps the value from server.properties (or the performance profile). Otherwise 2 to 32. The biggest lever for CPU load."
+  max_players:
+    name: Maximum players
+    description: "0 keeps the value from server.properties (or the performance profile)."
+  entity_broadcast_range:
+    name: Entity broadcast range (%)
+    description: "0 keeps the default (100). Lower values (10 to 500) make mobs and items visible only at a shorter distance and save CPU and bandwidth."
+  difficulty:
+    name: Difficulty
+    description: "default keeps the current setting. Otherwise peaceful, easy, normal or hard. Applied on every start."
+  gamemode:
+    name: Default game mode
+    description: "default keeps the current setting. Otherwise survival, creative, adventure or spectator. Applies to players who join for the first time, or to everyone with Force game mode."
+  force_gamemode:
+    name: Force game mode
+    description: "true sets the default game mode for every player on each join. default keeps the current setting."
+  hardcore:
+    name: Hardcore
+    description: "Only takes effect for a newly created world. default keeps the current setting."
+  pvp:
+    name: Player versus player
+    description: "false stops players from damaging each other. default keeps the current setting."
+  allow_flight:
+    name: Allow flight
+    description: "true stops the server from kicking players for flying (needed for some mods and plugins). default keeps the current setting."
+  allow_nether:
+    name: Allow the Nether
+    description: "false disables travel to the Nether. default keeps the current setting."
+  spawn_monsters:
+    name: Spawn monsters
+    description: "false disables hostile mobs. default keeps the current setting."
+  spawn_animals:
+    name: Spawn animals
+    description: "false disables passive animals. default keeps the current setting."
+  spawn_npcs:
+    name: Spawn villagers
+    description: "false disables villagers. default keeps the current setting."
+  generate_structures:
+    name: Generate structures
+    description: "Villages, temples and so on. Only applies to newly generated chunks. default keeps the current setting."
+  command_blocks:
+    name: Enable command blocks
+    description: "true allows command blocks. default keeps the current setting."
+  spawn_protection:
+    name: Spawn protection (blocks)
+    description: "Radius around the spawn point that only operators can change. -1 keeps the value from server.properties, 0 turns it off."
+  motd:
+    name: Server message (MOTD)
+    description: "Text shown in the server list. Empty keeps the current text. No line breaks or backslashes."
+  level_seed:
+    name: World seed
+    description: "Only used when a new world is created. Empty keeps the current setting."
+  game_rules:
+    name: Game rules
+    description: "One entry per rule as name=value, for example keep_inventory=true or random_tick_speed=3. Applied on every start once the server is ready. Both spellings (keep_inventory and keepInventory) work and are converted to the one your Minecraft version uses. Removing an entry does not reset the rule."
+network:
+  25565/tcp: Minecraft server port (container fixed to 25565)

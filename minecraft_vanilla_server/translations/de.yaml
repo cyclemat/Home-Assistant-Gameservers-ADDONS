@@ -1,0 +1,111 @@
+configuration:
+  data_dir:
+    name: Datenverzeichnis
+    description: Ablageort für Serverdateien, Welten und die Java-Laufzeit.
+  accept_eula:
+    name: Minecraft-EULA akzeptieren
+    description: Muss aktiviert sein, damit der Server startet. Mit der Aktivierung stimmst du der Minecraft-EULA zu (https://aka.ms/MinecraftEULA).
+  xms_mb:
+    name: Minimaler RAM (MB)
+    description: Darf nicht größer sein als der maximale RAM.
+  xmx_mb:
+    name: Maximaler RAM (MB)
+    description: Maximaler Speicher für den Server.
+  mc_version:
+    name: Minecraft-Version
+    description: '"latest" oder eine bestimmte Version, zum Beispiel 1.21.1.'
+  server_jar_url:
+    name: Eigene Server-JAR-URL
+    description: Optional, https-Link auf eine Server-JAR. Überschreibt die Minecraft-Version und wird nicht per Prüfsumme verifiziert.
+  java_major:
+    name: Java-Version
+    description: Optional. Erzwingt eine Java-Version. Standardmäßig wird sie aus den Mojang-Metadaten gelesen.
+  whitelist_enabled:
+    name: Whitelist aktivieren
+    description: Nur Spieler auf der Whitelist dürfen beitreten. Die Liste selbst wird auch bei ausgeschalteter Whitelist gepflegt.
+  whitelist:
+    name: Whitelist
+    description: Spielernamen, die beitreten dürfen. Wird bei jedem Start mit dem Server abgeglichen. Im Spiel hinzugefügte Einträge bleiben erhalten, hier entfernte Einträge werden auch auf dem Server entfernt.
+  ops:
+    name: Operatoren
+    description: Spielernamen mit Operator-Rechten. Wird bei jedem Start mit dem Server abgeglichen.
+  banned_players:
+    name: Gesperrte Spieler
+    description: Spielernamen, die nicht beitreten dürfen (Sperrliste). Wird bei jedem Start mit dem Server abgeglichen.
+  performance_profile:
+    name: Leistungsprofil
+    description: "custom lässt server.properties unangetastet. low (Sichtweite 6, Simulation 4, 10 Spieler), balanced (8, 6, 20) oder high (12, 8, 40) setzen bei jedem Start view-distance, simulation-distance und max-players. Die Simulationsweite hat den größten Einfluss auf die CPU-Last."
+  cpu_priority:
+    name: CPU-Priorität
+    description: "normal, low oder lowest. Eine niedrigere Priorität lässt den Server Home Assistant den Vortritt, wenn die CPU ausgelastet ist."
+  cpu_cores:
+    name: CPU-Kerne
+    description: Anzahl der CPU-Kerne, die der Server nutzen darf, 0 bedeutet alle. Der Server läuft auf den letzten Kernen, damit die ersten für das System und Home Assistant frei bleiben.
+  memory_guard:
+    name: RAM-Schutz
+    description: Begrenzt den maximalen RAM automatisch, sodass mindestens ein Viertel des System-RAM (mindestens 1536 MB) für das System und Home Assistant frei bleibt. Sonst beendet Linux bei Speichermangel zuerst das Add-on.
+  fixed_heap:
+    name: Fester Heap
+    description: Setzt den minimalen RAM gleich dem maximalen RAM und belegt den Speicher beim Start. Das vermeidet Größenänderungen im Betrieb (von Paper empfohlen). Der Start dauert etwas länger.
+  view_distance:
+    name: Sichtweite (Chunks)
+    description: "0 behält den Wert aus server.properties (oder dem Leistungsprofil). Sonst 2 bis 32. Wirkt auf RAM und Netzwerklast."
+  simulation_distance:
+    name: Simulationsweite (Chunks)
+    description: "0 behält den Wert aus server.properties (oder dem Leistungsprofil). Sonst 2 bis 32. Der größte Hebel für die CPU-Last."
+  max_players:
+    name: Maximale Spielerzahl
+    description: "0 behält den Wert aus server.properties (oder dem Leistungsprofil)."
+  entity_broadcast_range:
+    name: Sichtbarkeit von Entitäten (%)
+    description: "0 behält den Standard (100). Kleinere Werte (10 bis 500) zeigen Mobs und Items nur auf kürzere Entfernung und sparen CPU und Bandbreite."
+  difficulty:
+    name: Schwierigkeitsgrad
+    description: "default behält die aktuelle Einstellung. Sonst peaceful, easy, normal oder hard. Wird bei jedem Start gesetzt."
+  gamemode:
+    name: Standard-Spielmodus
+    description: "default behält die aktuelle Einstellung. Sonst survival, creative, adventure oder spectator. Gilt für neu beitretende Spieler oder für alle mit Spielmodus erzwingen."
+  force_gamemode:
+    name: Spielmodus erzwingen
+    description: "true setzt bei jedem Beitritt den Standard-Spielmodus für jeden Spieler. default behält die aktuelle Einstellung."
+  hardcore:
+    name: Hardcore
+    description: "Wirkt nur bei einer neu erzeugten Welt. default behält die aktuelle Einstellung."
+  pvp:
+    name: Spieler gegen Spieler
+    description: "false verhindert, dass Spieler sich gegenseitig Schaden zufügen. default behält die aktuelle Einstellung."
+  allow_flight:
+    name: Fliegen erlauben
+    description: "true verhindert, dass der Server Spieler fürs Fliegen kickt (nötig für manche Mods und Plugins). default behält die aktuelle Einstellung."
+  allow_nether:
+    name: Nether erlauben
+    description: "false deaktiviert Reisen in den Nether. default behält die aktuelle Einstellung."
+  spawn_monsters:
+    name: Monster spawnen
+    description: "false deaktiviert feindliche Mobs. default behält die aktuelle Einstellung."
+  spawn_animals:
+    name: Tiere spawnen
+    description: "false deaktiviert friedliche Tiere. default behält die aktuelle Einstellung."
+  spawn_npcs:
+    name: Dorfbewohner spawnen
+    description: "false deaktiviert Dorfbewohner. default behält die aktuelle Einstellung."
+  generate_structures:
+    name: Strukturen generieren
+    description: "Dörfer, Tempel und so weiter. Wirkt nur bei neu generierten Chunks. default behält die aktuelle Einstellung."
+  command_blocks:
+    name: Befehlsblöcke aktivieren
+    description: "true erlaubt Befehlsblöcke. default behält die aktuelle Einstellung."
+  spawn_protection:
+    name: Spawn-Schutz (Blöcke)
+    description: "Radius um den Spawn-Punkt, den nur Operatoren verändern dürfen. -1 behält den Wert aus server.properties, 0 schaltet ihn aus."
+  motd:
+    name: Servernachricht (MOTD)
+    description: "Text in der Serverliste. Leer behält den aktuellen Text. Keine Zeilenumbrüche oder Backslashes."
+  level_seed:
+    name: Welt-Seed
+    description: "Wird nur beim Erzeugen einer neuen Welt verwendet. Leer behält die aktuelle Einstellung."
+  game_rules:
+    name: Spielregeln
+    description: "Ein Eintrag pro Regel als name=wert, zum Beispiel keep_inventory=true oder random_tick_speed=3. Wird bei jedem Start gesetzt, sobald der Server bereit ist. Beide Schreibweisen (keep_inventory und keepInventory) funktionieren und werden auf die Schreibweise deiner Minecraft-Version umgestellt. Ein entfernter Eintrag setzt die Regel nicht zurück."
+network:
+  25565/tcp: Minecraft-Server-Port (im Container fest 25565)

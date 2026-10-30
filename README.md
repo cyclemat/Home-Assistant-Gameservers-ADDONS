@@ -48,19 +48,27 @@ Benefits:
 ## 📦 Available Game Server Add-ons
 
 Each game server is provided as its own Home Assistant add-on with:
-- SteamCMD integration
+- SteamCMD integration (Steam based servers) or automatic Java and server downloads (Minecraft)
 - Persistent data storage
 - Automatic updates (optional)
 - Clean startup & shutdown handling
 
-Examples:
-- ⛏️ Minecraft Vanilla Dedicated Server
-- 🧵 Minecraft Fabric Dedicated Server
-- 🧪 FTB Minecraft Dedicated Server
-- 🛡️ Valheim Dedicated Server
-- 🧟 Palworld Dedicated Server
-- 🚀 StarRupture Dedicated Server  
+| Add-on | Folder | Notes |
+|---|---|---|
+| 🛡️ Valheim Dedicated Server | [`valheim_steamcmd_server`](valheim_steamcmd_server) | SteamCMD |
+| 🧟 Palworld Dedicated Server | [`palworld_steamcmd_server`](palworld_steamcmd_server) | SteamCMD |
+| 🚀 StarRupture Dedicated Server | [`starrupture_server`](starrupture_server) | SteamCMD + Wine |
+| 🌾 7 Days to Die Dedicated Server | [`7days2die_steamcmd_server`](7days2die_steamcmd_server) | SteamCMD |
+| 🔫 Counter-Strike: Source Dedicated Server | [`css_steamcmd_server`](css_steamcmd_server) | SteamCMD |
+| 🔧 Garry's Mod Dedicated Server | [`gmod_steamcmd_server`](gmod_steamcmd_server) | SteamCMD |
+| ⛏️ Minecraft Vanilla Dedicated Server | [`minecraft_vanilla_server`](minecraft_vanilla_server) | Official Mojang server, the Java version follows the Minecraft version |
+| 🧱 Minecraft Paper + Geyser (Java & Bedrock) | [`minecraft_paper_geyser_server`](minecraft_paper_geyser_server) | Paper with Geyser and Floodgate, Java and Bedrock players on one server |
+| 📦 FTB Minecraft Server | [`ftb_minecraft_server`](ftb_minecraft_server) | Modpacks via the FTB installer |
+
 *(more coming)*
+
+> The Minecraft Vanilla and Paper + Geyser add-ons require you to accept the [Minecraft EULA](https://aka.ms/MinecraftEULA)
+> in the add-on configuration (`accept_eula`) before the server starts.
 
 ---
 

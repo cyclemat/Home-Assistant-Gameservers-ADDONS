@@ -1,4 +1,5 @@
-FROM ghcr.io/hassio-addons/debian-base:stable
+# Basisimage gepinnt, damit Builds reproduzierbar bleiben (bei Bedarf bewusst anheben)
+FROM ghcr.io/hassio-addons/debian-base:9.5.1
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -13,7 +14,7 @@ RUN apt-get update \
     grep \
     findutils \
     tar \
-    xz-utils \
+    util-linux \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

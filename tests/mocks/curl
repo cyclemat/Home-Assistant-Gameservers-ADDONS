@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Mock für curl.
+# Liefert Dateien aus $MOCK_WWW (Pfad = URL ohne Schema und ohne Query, Verzeichnisse
+# liefern die Datei "index") und protokolliert alle Aufrufe in $MOCK_CALLS.
+# Fehler lassen sich über $MOCK_FAIL einschleusen: eine Glob-Zeile pro Muster,
+# das gegen die URL ohne Schema geprüft wird (Verhalten wie "curl -f" bei HTTP 404).
+
+out=""
+url=""
+proto_https_only=0
+
+while (( $# )); do
+  case "$1" in
+    -o)                out="$2"; shift 2 ;;
+    -H)                echo "HEADER $2" >> "${MOCK_CALLS}"; shift 2 ;;
+    --proto|--proto-redir)
+      [[ "$2" == "=https" ]] && proto_https_only=1
+      shift 2 ;;
+    --retry|--retry-delay) shift 2 ;;
+    -*)                shift ;;
+    *)                 url="$1"; shift ;;
+  esac
+done
+
+echo "GET ${url}" >> "${MOCK_CALLS}"
+
+if (( proto_https_only )) && [[ "${url}" != https://* ]]; then
+  echo "curl: (1) Protocol \"${url%%:*}\" disabled" >&2
+  exit 1
+fi
+
+stripped="${url#*://}"
+stripped="${stripped%%\?*}"
+
+if [[ -f "${MOCK_FAIL:-/nonexistent}" ]]; then
+  while IFS= read -r pattern; do
+    [[ -n "${pattern}" ]] || continue
+    # shellcheck disable=SC2053
+    if [[ "${stripped}" == ${pattern} ]]; then
+      echo "curl: (22) The requested URL returned error: 500" >&2
+      exit 22
+    fi
+  done < "${MOCK_FAIL}"
+fi
+
+path="${MOCK_WWW}/${stripped}"
+[[ -d "${path}" ]] && path="${path}/index"
+
+if [[ ! -f "${path}" ]]; then
+  echo "curl: (22) The requested URL returned error: 404" >&2
+  exit 22
+fi
+
+if [[ -n "${out}" ]]; then
+  cp "${path}" "${out}"
+else
+  cat "${path}"
+fi

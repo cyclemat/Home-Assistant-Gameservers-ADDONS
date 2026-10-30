@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Mock für java. Wird als bin/java in ein gefälschtes Temurin-Archiv gepackt und
+# von der run.sh wie ein echtes JRE installiert.
+#
+# Steuerung über Umgebungsvariablen:
+#   MOCK_JAVA_MODE       exit (Standard): beendet sich sofort mit MOCK_JAVA_EXIT_CODE
+#                        wait: läuft, bis "stop" auf stdin kommt, und beendet sich dann mit 0
+#   MOCK_JAVA_EXIT_CODE  Exit-Code im Modus exit (Standard 0)
+#   MOCK_JAVA_LOG        Datei für die Aufruf-Argumente
+#   MOCK_STDIN_LOG       Datei, in die empfangene stdin-Zeilen geschrieben werden
+#   MOCK_READY           wird angelegt, sobald der "Server" läuft
+
+here="$(cd "$(dirname "$0")" && pwd)"
+major="$(cat "${here}/../.mock_major" 2>/dev/null || echo "?")"
+
+if [[ "${1:-}" == "-version" ]]; then
+  echo "openjdk version \"${major}.0.1\" 2026-01-20 LTS" >&2
+  echo "OpenJDK Runtime Environment Temurin-${major}.0.1+1 (build ${major}.0.1+1-LTS)" >&2
+  exit 0
+fi
+
+echo "major=${major} args=$* nice=$(nice 2>/dev/null) cpus=$(nproc 2>/dev/null)" >> "${MOCK_JAVA_LOG}"
+
+mkdir -p logs
+echo "[Server thread/INFO]: Starting minecraft server (mock java ${major})" | tee -a logs/latest.log
+echo "[Server thread/INFO]: Done (0.1s)! For help, type \"help\"" | tee -a logs/latest.log
+touch "${MOCK_READY}"
+
+if [[ "${MOCK_JAVA_MODE:-exit}" == "exit" ]]; then
+  exit "${MOCK_JAVA_EXIT_CODE:-0}"
+fi
+
+while IFS= read -r line; do
+  echo "${line}" >> "${MOCK_STDIN_LOG}"
+  if [[ "${line}" == "stop" ]]; then
+    echo "[Server thread/INFO]: Stopping the server" | tee -a logs/latest.log
+    echo "[Server thread/INFO]: Saving worlds" | tee -a logs/latest.log
+    exit 0
+  fi
+done

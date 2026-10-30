@@ -2,19 +2,21 @@ name: "Minecraft Vanilla Dedicated Server"
 slug: minecraft_vanilla_server
 description: >
   Minecraft Vanilla Dedicated Server for Home Assistant OS.
-  Automatically installs Java, accepts the Minecraft EULA,
-  downloads the selected server version and stores all data
-  persistently in /share.
-version: "0.0.2"
+  Installs the Java version required by the selected Minecraft version,
+  downloads and verifies the server JAR and stores all data persistently
+  in /share. The Minecraft EULA must be accepted explicitly in the
+  add-on configuration.
+version: "0.0.4"
 
 arch:
   - amd64
   - aarch64
 
-startup: application
-boot: auto
 init: false
-host_network: false
+# Kein Host-Netzwerk (HA-Standard): nur die unten gelisteten Ports werden veröffentlicht
+
+# Zeit zum sauberen Speichern der Welt beim Stoppen (Standard sind 10 s)
+timeout: 60
 
 # Container läuft IMMER auf 25565
 # Der Host-Port kann im HA UI geändert werden
@@ -29,6 +31,9 @@ map:
 options:
   data_dir: "/share/minecraft-vanilla"
 
+  # Muss auf true gesetzt werden: https://aka.ms/MinecraftEULA
+  accept_eula: false
+
   # RAM (MB)
   xms_mb: 1024
   xmx_mb: 4096
@@ -36,12 +41,94 @@ options:
   # "latest" oder z.B. "1.21.1"
   mc_version: "latest"
 
-  # Optional: feste Server-JAR URL (überschreibt mc_version)
+  # Optional: feste Server-JAR URL (überschreibt mc_version, nur https)
   server_jar_url: ""
+
+  # Spielerlisten, werden bei jedem Start mit dem Server abgeglichen
+  # (Whitelist nur aktiv, wenn whitelist_enabled true ist)
+  whitelist_enabled: false
+  whitelist: []
+  ops: []
+  banned_players: []
+
+  # Leistung
+  # custom = server.properties bleibt unangetastet, sonst low, balanced oder high
+  performance_profile: "custom"
+  # normal, low oder lowest: niedrigere Priorität schont Home Assistant
+  cpu_priority: "normal"
+  # Anzahl der CPU-Kerne für den Server, 0 = alle
+  cpu_cores: 0
+  # xmx_mb automatisch begrenzen, damit RAM für System und Home Assistant bleibt
+  memory_guard: true
+  # Xms = Xmx und Heap sofort belegen
+  fixed_heap: false
+
+  # Spielwelt: 0 bzw. -1 lässt den Wert in server.properties unverändert und überschreibt das Leistungsprofil sonst
+  view_distance: 0
+  simulation_distance: 0
+  max_players: 0
+  entity_broadcast_range: 0
+
+  # Spielerlebnis: "default" lässt den Wert in server.properties unverändert
+  difficulty: "default"
+  gamemode: "default"
+  force_gamemode: "default"
+  hardcore: "default"
+  pvp: "default"
+  allow_flight: "default"
+  allow_nether: "default"
+  spawn_monsters: "default"
+  spawn_animals: "default"
+  spawn_npcs: "default"
+  generate_structures: "default"
+  command_blocks: "default"
+  spawn_protection: -1
+  motd: ""
+  # Gilt nur beim Erzeugen einer neuen Welt
+  level_seed: ""
+
+  # Spielregeln als name=wert, z. B. keep_inventory=true (siehe README)
+  game_rules: []
 
 schema:
   data_dir: str
+  accept_eula: bool
   xms_mb: int
   xmx_mb: int
   mc_version: str
   server_jar_url: str?
+  # Optional: Java-Version erzwingen (sonst aus den Mojang-Metadaten)
+  java_major: int(8,99)?
+  whitelist_enabled: bool
+  whitelist:
+    - match(^[A-Za-z0-9_]{1,16}$)
+  ops:
+    - match(^[A-Za-z0-9_]{1,16}$)
+  banned_players:
+    - match(^[A-Za-z0-9_]{1,16}$)
+  performance_profile: list(custom|low|balanced|high)
+  cpu_priority: list(normal|low|lowest)
+  cpu_cores: int(0,64)
+  memory_guard: bool
+  fixed_heap: bool
+  view_distance: int(0,32)
+  simulation_distance: int(0,32)
+  max_players: int(0,10000)
+  entity_broadcast_range: int(0,500)
+  difficulty: list(default|peaceful|easy|normal|hard)
+  gamemode: list(default|survival|creative|adventure|spectator)
+  force_gamemode: list(default|true|false)
+  hardcore: list(default|true|false)
+  pvp: list(default|true|false)
+  allow_flight: list(default|true|false)
+  allow_nether: list(default|true|false)
+  spawn_monsters: list(default|true|false)
+  spawn_animals: list(default|true|false)
+  spawn_npcs: list(default|true|false)
+  generate_structures: list(default|true|false)
+  command_blocks: list(default|true|false)
+  spawn_protection: int(-1,1000)
+  motd: str?
+  level_seed: str?
+  game_rules:
+    - match(^[A-Za-z0-9_:]{1,64}=(true|false|-?[0-9]{1,9})$)
