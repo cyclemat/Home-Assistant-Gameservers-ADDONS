@@ -1,8 +1,7 @@
-
 name: Valheim Dedicated Server (SteamCMD)
 slug: valheim_steamcmd_server
 description: Valheim Dedicated Server
-version: "1.0.6"
+version: "1.0.5"
 
 url: https://github.com/cyclemat/Home-Assistant-Gameservers-ADDONS/tree/main/valheim_steamcmd_server
 
