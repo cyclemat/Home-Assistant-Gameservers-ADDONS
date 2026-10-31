@@ -1,3 +1,4 @@
+
 FROM ghcr.io/hassio-addons/debian-base:stable
 
 ENV LANG=C.UTF-8
@@ -8,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash coreutils procps jq \
     lib32gcc-s1 lib32stdc++6 libc6-i386 lib32z1 \
     libstdc++6 libgcc-s1 libatomic1 \
+    libpulse0 libpulse-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p ${STEAMCMD_DIR} \
